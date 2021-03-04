@@ -1,0 +1,59 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.IO" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Xml" #>
+
+<#
+    string path = @"C:\Users\Daniel Kienbock\modelio\workspace\KAW1StudentGrading\XMI\kaw1studentgrading.xmi";
+    string content = File.ReadAllText(path);
+
+#>
+
+
+<#
+
+    var doc = new XmlDocument();
+    doc.Load(path);
+
+    foreach (XmlNode node in doc.ChildNodes)
+    {
+        foreach (XmlNode innerNode in node.ChildNodes)
+        {
+            foreach (XmlNode innerInnerNode in innerNode.ChildNodes)
+            {
+                if ((innerInnerNode?.Attributes?["name"])?.Value != null)
+                {
+                    if ((innerInnerNode?.Attributes?["xmi:type"])?.Value == "uml:Package")
+                    {
+                        foreach (XmlNode innerInnerInnerNode in innerInnerNode)
+                        {
+                            if ((innerInnerInnerNode?.Attributes?["xmi:type"])?.Value == "uml:Class")
+                            {
+#>
+
+namespace KAW1StudentGrading.<#= innerInnerNode?.Attributes?["name"].Value #> {
+
+    public class <#= innerInnerInnerNode?.Attributes?["name"].Value #> {
+        public string Name { get; set; }
+    }
+}
+
+
+
+<#
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+#>
+
