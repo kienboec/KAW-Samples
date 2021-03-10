@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Events Lister API",
+    "description": "Lists the events of FH-TW by crawling the main page.",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Gets all events by utilizing the communication handler and interpret the result using the EventsLister.CBP.IHTTPOutputInterpreter component.",
+        "description": "Sample request:\r\n    GET /api/events",
+        "responses": {
+          "200": {
+            "description": "Successfully returning the data (cached).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error occured."
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

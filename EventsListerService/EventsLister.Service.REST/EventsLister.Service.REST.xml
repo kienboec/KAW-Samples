@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventsLister.Service.REST</name>
+    </assembly>
+    <members>
+        <member name="T:EventsLister.Service.REST.Controllers.EventsController">
+            <summary>
+            This controller is responsible for all event-driven actions.
+            </summary>
+        </member>
+        <member name="M:EventsLister.Service.REST.Controllers.EventsController.#ctor(Microsoft.Extensions.Logging.ILogger{EventsLister.Service.REST.Controllers.EventsController},EventsLister.CBP.IArgumentHandler,EventsLister.CBP.INetworkCommunicationHandler,EventsLister.CBP.IHTTPOutputInterpreter)">
+            <summary>
+            Creates an instance of the events controller.
+            </summary>
+            <param name="logger">To log actions.</param>
+            <param name="argumentHandler">Injects all user-driven input from outside.</param>
+            <param name="networkCommunicationHandler">Communicates with other systems.</param>
+            <param name="httpOutputInterpreter">Processes output to an understandable internal format.</param>
+        </member>
+        <member name="M:EventsLister.Service.REST.Controllers.EventsController.GetAllEvents">
+            <summary>
+            Gets all events by utilizing the communication handler and interpret the result using the <see cref="T:EventsLister.CBP.IHTTPOutputInterpreter"/> component.
+            </summary>
+            <remarks>
+            Sample request:
+                GET /api/events
+            </remarks>
+            <returns>The events as plain string with dates.</returns>
+            <response code="200">Successfully returning the data (cached).</response>
+            <response code="500">Internal error occured.</response>
+        </member>
+        <member name="T:EventsLister.Service.REST.Program">
+            <summary>
+            The class called by the OS for starting the application.
+            This class uses <see cref="T:EventsLister.Service.REST.Startup"/> to bring the .net core application up and running.
+            </summary>
+        </member>
+        <member name="M:EventsLister.Service.REST.Program.Main(System.String[])">
+            <summary>
+            Defines the entry point of the application.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:EventsLister.Service.REST.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Creates the host builder.
+            </summary>
+            <param name="args">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsLister.Service.REST.Startup">
+            <summary>
+            The class responsible for bootstrapping the services.
+            </summary>
+        </member>
+        <member name="M:EventsLister.Service.REST.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:EventsLister.Service.REST.Startup"/> class.</summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="M:EventsLister.Service.REST.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>This method gets called by the runtime. Use this method to add services to the container.</summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:EventsLister.Service.REST.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>This method gets called by the runtime. Use this method to configure the HTTP request pipeline.</summary>
+            <param name="app">The application.</param>
+            <param name="env">The env.</param>
+        </member>
+    </members>
+</doc>
