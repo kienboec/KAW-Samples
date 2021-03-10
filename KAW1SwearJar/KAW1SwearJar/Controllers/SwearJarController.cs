@@ -12,36 +12,49 @@ namespace KAW1SwearJar.Controllers
     [ApiController]
     public class SwearJarController : ControllerBase
     {
-        // GET: api/<SwearJarController>
+        private static Dictionary<string, int> swearJarData = new Dictionary<string, int>();
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Dictionary<string, int> GetFullSwearJarData()
         {
-            return new string[] { "value1", "value2" };
+            return swearJarData;
         }
 
-        // GET api/<SwearJarController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{username}")]
+        public int GetSwearJarDataForUser(string username)
         {
-            return "value";
+            try
+            {
+                return swearJarData.ContainsKey(username) ? swearJarData[username] : 0;
+            }
+            catch (Exception exc)
+            {
+                return 0;
+            }
         }
 
-        // POST api/<SwearJarController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{username}")]
+        public int IncrementSwearJarBalanceForUser(string username)
         {
-        }
+            if (!swearJarData.ContainsKey(username))
+            {
+                swearJarData.Add(username, 0);
+            }
 
-        // PUT api/<SwearJarController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            swearJarData[username] = swearJarData[username] + 1;
+
+            return swearJarData[username];
         }
 
         // DELETE api/<SwearJarController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{username}")]
+        public int ResetSwearJarBalanceForUser(string username)
         {
+            // first version
+            // swearJarData.Remove(username);
+
+            swearJarData[username] = 0;
+            return swearJarData[username];
         }
     }
 }
