@@ -12,46 +12,39 @@ namespace KAW2SwearJar.Controllers
     [ApiController]
     public class SwearJarController : ControllerBase
     {
+        private static Dictionary<string, int> _swearJarBalance = new Dictionary<string, int>();
+
         // GET: api/<SwearJarController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Dictionary<string, int> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _swearJarBalance;
         }
 
         // GET api/<SwearJarController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{username}")]
+        public int Get(string username)
         {
-            return "value";
+            return _swearJarBalance[username];
         }
 
         // POST api/<SwearJarController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{username}")]
+        public void Post(string username)
         {
-        }
+            if (!_swearJarBalance.ContainsKey(username))
+            {
+                _swearJarBalance.Add(username, 0);
+            }
 
-        [HttpPost("asdf")]
-        public void TestEndpoint()
-        {
-        }
-
-        [HttpPost("/api/asdf")]
-        public void TestEndpoint2()
-        {
-        }
-
-        // PUT api/<SwearJarController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            _swearJarBalance[username] = _swearJarBalance[username] + 1;
         }
 
         // DELETE api/<SwearJarController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{username}")]
+        public void Delete(string username)
         {
+            _swearJarBalance.Remove(username);
         }
     }
 }
