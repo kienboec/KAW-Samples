@@ -12,39 +12,42 @@ namespace KAW2SwearJar.Controllers
     [ApiController]
     public class SwearJarController : ControllerBase
     {
-        private static Dictionary<string, int> _swearJarBalance = new Dictionary<string, int>();
+        private static readonly Dictionary<string, int> SwearJarBalance = new Dictionary<string, int>();
 
         // GET: api/<SwearJarController>
         [HttpGet]
         public Dictionary<string, int> Get()
         {
-            return _swearJarBalance;
+            return SwearJarBalance;
         }
 
         // GET api/<SwearJarController>/5
         [HttpGet("{username}")]
         public int Get(string username)
         {
-            return _swearJarBalance[username];
+            return SwearJarBalance.ContainsKey(username) 
+                ? SwearJarBalance[username] 
+                : 0;
         }
 
         // POST api/<SwearJarController>
         [HttpPost("{username}")]
-        public void Post(string username)
+        public int Post(string username)
         {
-            if (!_swearJarBalance.ContainsKey(username))
+            if (!SwearJarBalance.ContainsKey(username))
             {
-                _swearJarBalance.Add(username, 0);
+                SwearJarBalance.Add(username, 0);
             }
 
-            _swearJarBalance[username] = _swearJarBalance[username] + 1;
+            SwearJarBalance[username] = SwearJarBalance[username] + 1;
+            return SwearJarBalance[username];
         }
 
         // DELETE api/<SwearJarController>/5
         [HttpDelete("{username}")]
         public void Delete(string username)
         {
-            _swearJarBalance.Remove(username);
+            SwearJarBalance.Remove(username);
         }
     }
 }
