@@ -32,6 +32,16 @@ namespace KAW2SwearJar.Controllers
         {
         }
 
+        [HttpPost("asdf")]
+        public void TestEndpoint()
+        {
+        }
+
+        [HttpPost("/api/asdf")]
+        public void TestEndpoint2()
+        {
+        }
+
         // PUT api/<SwearJarController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
