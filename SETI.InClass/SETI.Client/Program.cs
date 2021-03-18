@@ -11,6 +11,10 @@ namespace SETI.Client
         static void Main(string[] args)
         {
             IConnectionFactory factory = new ConnectionFactory("tcp://localhost:61616");
+            
+            // disable pre-fetching!
+            ((ConnectionFactory)factory).PrefetchPolicy.SetAll(0);
+
             IConnection connection = factory.CreateConnection();
             connection.Start();
             ISession session = connection.CreateSession();
