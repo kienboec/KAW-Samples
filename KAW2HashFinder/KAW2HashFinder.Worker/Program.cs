@@ -28,24 +28,30 @@ namespace KAW2HashFinder.Worker
             IMessage message;
             while ((message = consumer.Receive(TimeSpan.FromMinutes(1))) != null)
             {
+                
                 // map message body to our strongly typed message type
                 var objectMessage = message as IObjectMessage;
-                var mapMessage = objectMessage?.Body as RequestMessage;
-
-                // analyze pin
-                if (PinUtil.GetMD5Hash(mapMessage.PinToCalculate) == mapMessage.ResultHash)
+                if (objectMessage?.Body is RequestMessage mapMessage)
                 {
+                    // debug output
+                    Console.WriteLine(mapMessage.PinToCalculate);
 
-                    // pin found!
-                    Console.WriteLine($"yeaaah found the hash {mapMessage.PinToCalculate} - {mapMessage.ResultHash}");
+                    // analyze pin
+                    if (PinUtil.GetMD5Hash(mapMessage.PinToCalculate) == mapMessage.ResultHash)
+                    {
 
-                    producer.Send(producer.CreateObjectMessage(
-                        new ResponseMessage()
-                        {
-                            ResultPin = mapMessage.PinToCalculate,
-                            ResultHash = mapMessage.ResultHash
-                        }));
-                    break;
+                        // pin found!
+                        Console.WriteLine(
+                            $"yeaaah found the hash {mapMessage.PinToCalculate} - {mapMessage.ResultHash}");
+
+                        producer.Send(producer.CreateObjectMessage(
+                            new ResponseMessage()
+                            {
+                                ResultPin = mapMessage.PinToCalculate,
+                                ResultHash = mapMessage.ResultHash
+                            }));
+                        break;
+                    }
                 }
             }
 
