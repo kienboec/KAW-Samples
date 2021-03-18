@@ -9,6 +9,8 @@ namespace KAW2HashFinder.Common
     public class HashFinderConfig
     {
         public const string RequestQueueName = "KAW2.HashFinder.Request";
+        public const string ResponseQueueName = "KAW2.HashFinder.Response";
+
         public const string ActiveMQEndpoint = "tcp://localhost:61616";
     }
 }

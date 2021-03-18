@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Apache.NMS;
 using Apache.NMS.ActiveMQ;
 using KAW2HashFinder.Common;
@@ -17,47 +18,61 @@ namespace KAW2HashFinder
             connection.Start();
             ISession session = connection.CreateSession();
 
-            IDestination dest = session.GetQueue(HashFinderConfig.RequestQueueName);
-            IMessageProducer producer = session.CreateProducer(dest);
+            IDestination requestDestination = session.GetQueue(HashFinderConfig.RequestQueueName);
+            IMessageProducer producer = session.CreateProducer(requestDestination);
+
+            IDestination responseDestination = session.GetQueue(HashFinderConfig.ResponseQueueName);
+            IMessageConsumer consumer = session.CreateConsumer(responseDestination);
 
             // -----------------------------------------------------------------------------------------------
 
             // handle UI input and calculate Hash
             Console.Write("Please enter your pin: ");
             var pin = Console.ReadLine();
-            var hashedPin = GetMD5Hash(pin);
+            var hashedPin = PinUtil.GetMD5Hash(pin);
             Console.WriteLine();
             Console.WriteLine("your hash is: " + hashedPin);
 
             // -----------------------------------------------------------------------------------------------
 
-            for (int i = 0; i <= 9999; i++)
+            var itemFound = false;
+            Task t = Task.Run(() =>
             {
-                var objectMessage = producer.CreateObjectMessage(
-                    new RequestMessage()
-                    {
-                        PinToCalculate = i.ToString("0000"),
-                        ResultHash = hashedPin, 
-                    });
-                producer.Send(objectMessage);
-            }
+                // create messages for workers
+                for (int i = 0; i <= 9999 && !itemFound; i++)
+                {
+                    var objectMessage = producer.CreateObjectMessage(
+                        new RequestMessage()
+                        {
+                            PinToCalculate = i.ToString("0000"),
+                            ResultHash = hashedPin,
+                        });
+                    producer.Send(objectMessage);
+                }
+            });
 
             // -----------------------------------------------------------------------------------------------
 
-            Console.WriteLine("... processing finished");
-        }
-
-        public static string GetMD5Hash(string pin)
-        {
-            var hashedPinBytes = MD5.HashData(Encoding.UTF8.GetBytes(pin));
-
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < hashedPinBytes.Length; i++)
+            // read worker-responses
+            IMessage message;
+            if ((message = consumer.Receive(TimeSpan.FromMinutes(1))) != null)
             {
-                builder.Append(hashedPinBytes[i].ToString("x2"));
+                itemFound = true;
+                // map message body to our strongly typed message type
+                var objectMessage = message as IObjectMessage;
+                var mapMessage = objectMessage?.Body as ResponseMessage;
+
+                Console.WriteLine($"pin is: {mapMessage.ResultPin} ({mapMessage.ResultHash})");
             }
 
-            return builder.ToString();
+            Task.WaitAll(new[] {t});
+
+            // final UI candy
+            Console.WriteLine("... processing finished");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
         }
+
+
     }
 }
