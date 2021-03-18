@@ -27,9 +27,12 @@ namespace KAW1HashFinder
             // ------------------------------------------------------------------------------------------------------------
 
             // calculate a hash to find based on user input
+            PrintTimestamp();
             Console.Write("Please enter your pin: ");
             var myPin = Console.ReadLine();
-            var hash = GetPinHash(myPin);
+            PrintTimestamp();
+            var hash = PinUtil.GetPinHash(myPin);
+            PrintTimestamp();
             Console.WriteLine();
             Console.WriteLine("Your hash is: " + hash);
 
@@ -46,31 +49,26 @@ namespace KAW1HashFinder
                     });
                 producer.Send(objectMessage);
             }
+            PrintTimestamp();
 
             // ------------------------------------------------------------------------------------------------------------
 
             IMessage message;
-            while ((message = consumer.Receive(TimeSpan.FromMinutes(2))) != null)
+            if ((message = consumer.Receive(TimeSpan.FromMinutes(2))) != null)
             {
                 var objectMessage = message as IObjectMessage;
                 var mapMessage = objectMessage?.Body as HashFinderResponse;
                 Console.WriteLine("Successfully found pin by worker: " + (mapMessage?.FoundPin ?? "<invalid pin>"));
+                PrintTimestamp();
             }
 
+            PrintTimestamp();
             Console.WriteLine("... processing finished");
         }
 
-        public static string GetPinHash(string pin)
+        public static void PrintTimestamp()
         {
-            var pinBytes = Encoding.UTF8.GetBytes(pin);
-            var hashedPinBytes = MD5.HashData(pinBytes);
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < hashedPinBytes.Length; i++)
-            {
-                builder.Append(hashedPinBytes[i].ToString("x2"));
-            }
-
-            return builder.ToString();
+            Console.WriteLine($"Timestamp: {DateTime.Now.ToLongTimeString()}".PadRight(80, ' '));
         }
     }
 }
