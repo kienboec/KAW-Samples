@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="&lt;-+&#xD;&#xA;     | Changed &#xD;&#xA;     |&#xD;&#xA;     | propagates&#xD;&#xA;     | info&#xD;&#xA;     | to &#xD;&#xA;     | the&#xD;&#xA;     | View">
+    <Position X="10.007" Y="3.583" Height="1.785" Width="1.769" />
+  </Comment>
+  <Comment CommentText="- UI&#xD;&#xA;- user interaction&#xD;&#xA;&#xD;&#xA;">
+    <Position X="2.75" Y="2" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="In this case Controller doesn’t know anything about View, and the idea is that a View can switch Controllers and a single controller can be used by multiple Views. &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;View subscribes to the changes done to the model &amp; hence both are sync from the data perspective. &#xD;&#xA;">
+    <Position X="10.708" Y="1.111" Height="1.84" Width="2.443" />
+  </Comment>
+  <Class Name="MVC_Walker.View.MainView">
+    <Position X="7.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAgAAAABAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\MainView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_controller" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MVC_Walker.Program">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="View" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MVC_Walker.Model.BoyModel">
+    <Position X="10" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgJCAAAAAAAAAAAAAAAAAIgAAAAAA=</HashCode>
+      <FileName>Model\BoyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MVC_Walker.Controller.MainController">
+    <Position X="5.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Controller\MainController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BoyModel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MVC_Walker.Controller.IController" Collapsed="true">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Controller\IController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MVC_Walker.Model.Direction">
+    <Position X="12.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
+      <FileName>Model\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MVP_Walker.View.MainView">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAgAAAABAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>View\MainView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_presenter" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVP_Walker.Controller.MainPresenter">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <AssociationLine Name="View" Type="MVP_Walker.View.IView" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10" Y="6.623" />
+        <Point X="10" Y="7.947" />
+        <Point X="2.812" Y="7.947" />
+        <Point X="2.812" Y="6.046" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAAAABAAAAAAAAAAAABAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Presenter\MainPresenter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BoyModel" />
+      <Property Name="View" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVP_Walker.Model.BoyModel">
+    <Position X="12.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgJCAAAAAAAAAAAAAAAAAIgAAAAAA=</HashCode>
+      <FileName>Model\BoyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MVP_Walker.Program">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="View" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="MVP_Walker.View.IView">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\IView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVP_Walker.Controller.IPresenter">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAABAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Presenter\IPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MVP_Walker.Model.Direction">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
+      <FileName>Model\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
