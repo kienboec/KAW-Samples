@@ -38,11 +38,11 @@ namespace FancyNumbersGame.UI
             }
         }
 
-        private void CalculateWinnerAction()
+        private async void GenerateNewNumberAction()
         {
-            WebClient client = new WebClient();
-            string data = client.DownloadString("https://localhost:44376/api/Numbers/");
-            Winner = data;
+            HttpClient client = new HttpClient();
+            var content = new StringContent(string.Empty);
+            await client.PostAsync("https://localhost:44376/api/Numbers", content);
         }
 
         private async void SendGuessAction()
@@ -52,11 +52,11 @@ namespace FancyNumbersGame.UI
             await client.PostAsync("https://localhost:44376/api/Numbers/" + this.Username, content);
         }
 
-        private async void GenerateNewNumberAction()
+        private void CalculateWinnerAction()
         {
-            HttpClient client = new HttpClient();
-            var content = new StringContent(string.Empty);
-            await client.PostAsync("https://localhost:44376/api/Numbers", content);
+            WebClient client = new WebClient();
+            string data = client.DownloadString("https://localhost:44376/api/Numbers/");
+            Winner = data;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

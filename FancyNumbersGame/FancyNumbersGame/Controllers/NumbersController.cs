@@ -21,6 +21,7 @@ namespace FancyNumbersGame.Controllers
         {
             var random = new Random(DateTime.Now.Millisecond);
             _secretNumber = random.Next(0, 100);
+            _guesses.Clear();
         }
 
         // POST api/<NumbersController>
