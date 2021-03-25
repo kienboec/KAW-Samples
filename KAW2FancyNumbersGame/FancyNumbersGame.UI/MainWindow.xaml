@@ -1,0 +1,39 @@
+﻿<Window x:Class="FancyNumbersGame.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FancyNumbersGame.UI"
+        mc:Ignorable="d"
+        Title="Fancy Numbers Game" Height="332" Width="354">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Margin="5" Command="{Binding GenerateNewNumberCommand}">Generate new Number</Button>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label   Grid.Row="0" Grid.Column="0" Margin="5" >Username</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Username}"></TextBox>
+            <Label   Grid.Row="1" Grid.Column="0" Margin="5" >Guess</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Guess}"></TextBox>
+            <Button  Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding SendGuessCommand}">Send</Button>
+        </Grid>
+        <Button Grid.Row="2" Margin="5" Command="{Binding CalculateWinnerCommand}">Check Winner</Button>
+        <Label  Grid.Row="3" Margin="5" Content="{Binding Winner}"></Label>
+    </Grid>
+</Window>

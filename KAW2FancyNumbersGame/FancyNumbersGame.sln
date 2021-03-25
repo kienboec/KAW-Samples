@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FancyNumbersGame", "FancyNumbersGame\FancyNumbersGame.csproj", "{CE2482DB-69C4-4D11-9DE3-7C7B7C097DFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FancyNumbersGame.UI", "FancyNumbersGame.UI\FancyNumbersGame.UI.csproj", "{46FF4F6F-9A2B-4C85-94CC-3D540F9BDA90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyNumbersGame.ActiveMQ", "FancyNumbersGame.ActiveMQ\FancyNumbersGame.ActiveMQ.csproj", "{39B5EF69-65F3-44AB-B71C-180B66127D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FancyNumbersGame.ActiveMQ.Common", "FancyNumbersGame.ActiveMQ.Common\FancyNumbersGame.ActiveMQ.Common.csproj", "{B208E3F9-C6B6-4E90-9761-58B2289A2363}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "REST", "REST", "{789E2C4E-F126-49CF-910F-E86762619B90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActiveMQ", "ActiveMQ", "{E45CA184-3C99-4B68-9ABB-576DAAB17F85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE2482DB-69C4-4D11-9DE3-7C7B7C097DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2482DB-69C4-4D11-9DE3-7C7B7C097DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2482DB-69C4-4D11-9DE3-7C7B7C097DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2482DB-69C4-4D11-9DE3-7C7B7C097DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FF4F6F-9A2B-4C85-94CC-3D540F9BDA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FF4F6F-9A2B-4C85-94CC-3D540F9BDA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FF4F6F-9A2B-4C85-94CC-3D540F9BDA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FF4F6F-9A2B-4C85-94CC-3D540F9BDA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B5EF69-65F3-44AB-B71C-180B66127D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B5EF69-65F3-44AB-B71C-180B66127D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B5EF69-65F3-44AB-B71C-180B66127D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B5EF69-65F3-44AB-B71C-180B66127D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B208E3F9-C6B6-4E90-9761-58B2289A2363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B208E3F9-C6B6-4E90-9761-58B2289A2363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B208E3F9-C6B6-4E90-9761-58B2289A2363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B208E3F9-C6B6-4E90-9761-58B2289A2363}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE2482DB-69C4-4D11-9DE3-7C7B7C097DFC} = {789E2C4E-F126-49CF-910F-E86762619B90}
+		{39B5EF69-65F3-44AB-B71C-180B66127D78} = {E45CA184-3C99-4B68-9ABB-576DAAB17F85}
+		{B208E3F9-C6B6-4E90-9761-58B2289A2363} = {E45CA184-3C99-4B68-9ABB-576DAAB17F85}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D236887A-DF58-4D7B-95F0-7095A86FA3B1}
+	EndGlobalSection
+EndGlobal
