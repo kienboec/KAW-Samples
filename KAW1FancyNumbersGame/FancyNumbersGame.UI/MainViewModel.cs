@@ -43,7 +43,8 @@ namespace FancyNumbersGame.UI
 
         public MainViewModel()
         {
-            _comHandler = new ActiveMQComHandler();
+            // _comHandler = new ActiveMQComHandler();
+            _comHandler = new RESTComHandler();
         }
 
         private async void GenerateNewNumberAction()

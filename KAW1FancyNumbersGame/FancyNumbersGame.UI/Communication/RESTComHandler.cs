@@ -28,9 +28,7 @@ namespace FancyNumbersGame.UI.Communication
         public async Task<string> CallCalculateWinner()
         {
             WebClient client = new WebClient();
-            Task<string> task = Task.Run(()=>client.DownloadString(new Uri("https://localhost:44376/api/Numbers/")));
-            task.Wait();
-            return task.Result;
+            return await client.DownloadStringTaskAsync("https://localhost:44376/api/Numbers/");
         }
     }
 }
