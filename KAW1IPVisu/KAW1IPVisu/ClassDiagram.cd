@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KAW1IPVisu.NetworkInterfaceManager">
+    <Position X="6.25" Y="8.5" Width="3" />
+    <AssociationLine Name="_configurationHandler" Type="KAW1IPVisu.IConfigurationHandler" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="8.5" />
+        <Point X="7.75" Y="7.5" />
+        <Point X="10" Y="7.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>NetworkInterfaceManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_configurationHandler" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KAW1IPVisu.ConsoleOutputManager">
+    <Position X="2.75" Y="8.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleOutputManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KAW1IPVisu.Program">
+    <Position X="2.75" Y="3.75" Width="10.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgQAAAAEAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_configurationHandler" />
+      <Field Name="_networkInterfaceManager" />
+      <Field Name="_outputManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="KAW1IPVisu.CommandLineArgumentConfigurationHandler">
+    <Position X="10" Y="8.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>CommandLineArgumentConfigurationHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="KAW1IPVisu.INetworkInterfaceManager">
+    <Position X="6.25" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INetworkInterfaceManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KAW1IPVisu.IOutputManager">
+    <Position X="2.75" Y="6" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IOutputManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KAW1IPVisu.IConfigurationHandler">
+    <Position X="10" Y="6" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>IConfigurationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
