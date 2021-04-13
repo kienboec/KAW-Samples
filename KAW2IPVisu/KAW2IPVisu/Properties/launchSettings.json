@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "KAW2IPVisu": {
+      "commandName": "Project",
+      "commandLineArgs": "/wlan"
+    }
+  }
+}
