@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KAW1MaintenanceMonitor", "KAW1MaintenanceMonitor\KAW1MaintenanceMonitor.csproj", "{7B129909-8040-48CF-91E8-2E507D1B5803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KAW1MaintenanceMonitor.UI", "KAW1MaintenanceMonitor.UI\KAW1MaintenanceMonitor.UI.csproj", "{EE279FBA-42D0-4157-B399-4FEE06BE25FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B129909-8040-48CF-91E8-2E507D1B5803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B129909-8040-48CF-91E8-2E507D1B5803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B129909-8040-48CF-91E8-2E507D1B5803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B129909-8040-48CF-91E8-2E507D1B5803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE279FBA-42D0-4157-B399-4FEE06BE25FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE279FBA-42D0-4157-B399-4FEE06BE25FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE279FBA-42D0-4157-B399-4FEE06BE25FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE279FBA-42D0-4157-B399-4FEE06BE25FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63242EAC-AD2F-48E7-9B84-D1EAB13F0BA1}
+	EndGlobalSection
+EndGlobal
