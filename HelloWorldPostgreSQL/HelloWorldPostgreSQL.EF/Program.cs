@@ -42,7 +42,11 @@ namespace HelloWorldPostgreSQL.EF
             // Update-Database
 
             using HelloWorldContext db = new HelloWorldContext();
-            db.Add(new EFData() {X = "Hello EF"});
+
+            // don't use in combination with migration scripts! 
+            // db.Database.EnsureCreated();
+
+            db.Add(new EFData() {X = "Hello EF 2021"});
             db.SaveChanges();
 
             db.Items.OrderBy(item => item.X).ToList().ForEach(item => Console.WriteLine(item.X));
