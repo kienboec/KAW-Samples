@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginArchitectureInDotNetCore.MEF.Plugin1", "PluginArchitectureInDotNetCore.MEF.Plugin1\PluginArchitectureInDotNetCore.MEF.Plugin1.csproj", "{4BF63554-F09D-4994-9FDE-C8DBB788F0EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginArchitectureInDotNetCore.MEF.Plugin2", "PluginArchitectureInDotNetCore.MEF.Plugin2\PluginArchitectureInDotNetCore.MEF.Plugin2.csproj", "{DF2737EE-B3CE-429C-B0D5-8F54882ADA18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginArchitectureInDotNetCore.MEF.Common", "PluginArchitectureInDotNetCore.MEF.Common\PluginArchitectureInDotNetCore.MEF.Common.csproj", "{FCC51D03-78B9-452F-83CC-F2A0DAD762A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginArchitectureInDotNetCore.MEF.Application", "PluginArchitectureInDotNetCore.MEF.Application\PluginArchitectureInDotNetCore.MEF.Application.csproj", "{708B5B02-F369-4D5B-B726-1589B81533F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BF63554-F09D-4994-9FDE-C8DBB788F0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF63554-F09D-4994-9FDE-C8DBB788F0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF63554-F09D-4994-9FDE-C8DBB788F0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF63554-F09D-4994-9FDE-C8DBB788F0EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF2737EE-B3CE-429C-B0D5-8F54882ADA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2737EE-B3CE-429C-B0D5-8F54882ADA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2737EE-B3CE-429C-B0D5-8F54882ADA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2737EE-B3CE-429C-B0D5-8F54882ADA18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC51D03-78B9-452F-83CC-F2A0DAD762A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC51D03-78B9-452F-83CC-F2A0DAD762A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC51D03-78B9-452F-83CC-F2A0DAD762A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC51D03-78B9-452F-83CC-F2A0DAD762A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{708B5B02-F369-4D5B-B726-1589B81533F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708B5B02-F369-4D5B-B726-1589B81533F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708B5B02-F369-4D5B-B726-1589B81533F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708B5B02-F369-4D5B-B726-1589B81533F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8240126D-CA76-4A04-B737-2FFCD48945F1}
+	EndGlobalSection
+EndGlobal
