@@ -26,5 +26,6 @@
         <Button Grid.Row="1" Grid.Column="1" Margin="5" Content="{Binding Answer2}" Command="{Binding SendAnswerCommand}" CommandParameter="2" />
         <Button Grid.Row="2" Grid.Column="0" Margin="5" Content="{Binding Answer3}" Command="{Binding SendAnswerCommand}" CommandParameter="3" />
         <Button Grid.Row="2" Grid.Column="1" Margin="5" Content="{Binding Answer4}" Command="{Binding SendAnswerCommand}" CommandParameter="4" />
+        <CheckBox Content="ReadOnly" Grid.Column="1" Height="15" Margin="0,67,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="79" IsChecked="{Binding ReadOnlyMode}"/>
     </Grid>
 </Window>

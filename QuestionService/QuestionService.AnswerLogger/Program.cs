@@ -67,8 +67,6 @@ namespace QuestionService.AnswerLogger
             }
         }
 
-        
-
         public static void WriteOutputString(TextWriter writer, ITextFormatter formatter)
         {
             string output = formatter.Format(); 

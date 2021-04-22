@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace QuestionService
 {
-    public class StartupTimeStore
+    public class StartupTimeStore : IStartupTimeStore
     {
         public DateTime StartupTime { get; set; } = DateTime.MinValue;
         public void Initialize()

@@ -14,15 +14,31 @@ namespace QuestionService.UI
 {
     public class MainViewModel : ViewModelBase
     {
+        private bool _readOnlyMode = true;
         public string QuestionText { get; set; }
         public string Answer1 { get; set; }
         public string Answer2 { get; set; }
         public string Answer3 { get; set; }
         public string Answer4 { get; set; }
 
+        public bool ReadOnlyMode
+        {
+            get
+            {
+                return _readOnlyMode;
+            }
+            set
+            {
+                _readOnlyMode = value;
+                SendAnswerCommand.RaiseCanExecuteChanged();
+            }
+        }
+
         public RelayCommand<string> SendAnswerCommand { get; set; }
 
         public bool ForceDesignMode { get; set; } = false;
+
+        private Communicator _com = new Communicator();
 
         public MainViewModel() : this(false)
         {
@@ -31,11 +47,16 @@ namespace QuestionService.UI
         public MainViewModel(bool forceDesignMode)
         {
             ForceDesignMode = forceDesignMode;
-            SendAnswerCommand = new RelayCommand<string>(SendAnswerAction);
+            SendAnswerCommand = new RelayCommand<string>(
+                async (p) =>
+                {
+                    await SendAnswerAction(p);
+                }, 
+                (parameter) => { return !ReadOnlyMode; });
             InitData();
         }
 
-        private void InitData()
+        private async Task InitData()
         {
             if (IsInDesignMode || ForceDesignMode)
             {
@@ -43,7 +64,7 @@ namespace QuestionService.UI
                 return;
             }
          
-            ReadQuestionContentFromService();
+            await ReadQuestionContentFromService();
         }
 
         private void SetQuestionContentForDesign()
@@ -55,17 +76,11 @@ namespace QuestionService.UI
             Answer4 = "no one knows";
         }
 
-        private async void ReadQuestionContentFromService()
+        private async Task ReadQuestionContentFromService()
         {
-            // curl -X GET "https://localhost:44318/api/Question" -H  "accept: text/plain"
-            HttpClient client = new HttpClient();
             
-            // var content = await client.GetStringAsync("https://localhost:44318/api/Question");
-            var responseMessage = await client.GetAsync("https://localhost:44318/api/Question");
-            var content = await responseMessage.Content.ReadAsStringAsync();
+            var root = await _com.ReadQuestionContentFromService();
             
-            var document = JsonDocument.Parse(content);
-            var root = document.RootElement;
             QuestionText = root.GetProperty("text").ToString();
             RaisePropertyChanged(nameof(QuestionText));
             
@@ -81,15 +96,9 @@ namespace QuestionService.UI
             // Alternative approach: System.Text.Json.JsonSerializer.Deserialize<Question>(content)
         }
 
-        private async void SendAnswerAction(string stringParameter)
+        private async Task SendAnswerAction(string stringParameter)
         {
-            int parameter = int.Parse(stringParameter);
-
-            // curl -X POST "https://localhost:44318/api/Question/answers" -H  "accept: */*" -H  "Content-Type: application/json" -d "4"
-            HttpClient client = new HttpClient();
-            var content = JsonContent.Create(parameter, typeof(int));
-            var response = await client.PostAsync("https://localhost:44318/api/Question/answers", content);
-
+            await _com.SendAnswer(stringParameter);
         }
     }
 }
