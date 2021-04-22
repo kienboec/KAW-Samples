@@ -9,6 +9,7 @@ namespace QuestionService.AnswerLogger
 {
     class Program
     {
+        // introduced only to have the right startup order in debugging
         private static async void WaitForRESTService()
         {
             Console.WriteLine("wait for rest service to be up and running... ");
