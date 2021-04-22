@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionService.Common", "Q
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionService.AnswerLogger.Test", "QuestionService.AnswerLogger.Test\QuestionService.AnswerLogger.Test.csproj", "{ABC7DA39-10E4-4273-8922-F3D01F09EBD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionService.UI.Test", "QuestionService.UI.Test\QuestionService.UI.Test.csproj", "{EABC8962-8838-4F99-8EA5-AEA53CD61D6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ABC7DA39-10E4-4273-8922-F3D01F09EBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABC7DA39-10E4-4273-8922-F3D01F09EBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABC7DA39-10E4-4273-8922-F3D01F09EBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABC8962-8838-4F99-8EA5-AEA53CD61D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABC8962-8838-4F99-8EA5-AEA53CD61D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABC8962-8838-4F99-8EA5-AEA53CD61D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABC8962-8838-4F99-8EA5-AEA53CD61D6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

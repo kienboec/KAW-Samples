@@ -22,29 +22,48 @@ namespace QuestionService.UI
 
         public RelayCommand<string> SendAnswerCommand { get; set; }
 
-        public MainViewModel()
-        {
-            SendAnswerCommand = new RelayCommand<string>(SendAnswerAction);
+        public bool ForceDesignMode { get; set; } = false;
 
-            if (IsInDesignMode)
+        public MainViewModel() : this(false)
+        {
+        }
+
+        public MainViewModel(bool forceDesignMode)
+        {
+            ForceDesignMode = forceDesignMode;
+            SendAnswerCommand = new RelayCommand<string>(SendAnswerAction);
+            InitData();
+        }
+
+        private void InitData()
+        {
+            if (IsInDesignMode || ForceDesignMode)
             {
-                QuestionText = "How much is the fish?";
-                Answer1 = "5,40 €";
-                Answer2 = "a lot";
-                Answer3 = "the price of 2 fish";
-                Answer4 = "no one knows";
+                SetQuestionContentForDesign();
+                return;
             }
-            else
-            {
-                ReadQuestionContentFromService();
-            }
+         
+            ReadQuestionContentFromService();
+        }
+
+        private void SetQuestionContentForDesign()
+        {
+            QuestionText = "How much is the fish?";
+            Answer1 = "5,40 €";
+            Answer2 = "a lot";
+            Answer3 = "the price of 2 fish";
+            Answer4 = "no one knows";
         }
 
         private async void ReadQuestionContentFromService()
         {
             // curl -X GET "https://localhost:44318/api/Question" -H  "accept: text/plain"
             HttpClient client = new HttpClient();
-            var content = await client.GetStringAsync("https://localhost:44318/api/Question");
+            
+            // var content = await client.GetStringAsync("https://localhost:44318/api/Question");
+            var responseMessage = await client.GetAsync("https://localhost:44318/api/Question");
+            var content = await responseMessage.Content.ReadAsStringAsync();
+            
             var document = JsonDocument.Parse(content);
             var root = document.RootElement;
             QuestionText = root.GetProperty("text").ToString();
@@ -70,7 +89,7 @@ namespace QuestionService.UI
             HttpClient client = new HttpClient();
             var content = JsonContent.Create(parameter, typeof(int));
             var response = await client.PostAsync("https://localhost:44318/api/Question/answers", content);
-            
+
         }
     }
 }
