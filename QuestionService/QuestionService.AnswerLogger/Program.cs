@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using Apache.NMS;
@@ -7,7 +8,7 @@ using QuestionService.Common;
 
 namespace QuestionService.AnswerLogger
 {
-    class Program
+    public class Program
     {
         // introduced only to have the right startup order in debugging
         private static async void WaitForRESTService()
@@ -54,21 +55,24 @@ namespace QuestionService.AnswerLogger
                 if (message is IObjectMessage)
                 {
                     var objectMessage = message as IObjectMessage;
-                    var answerSentMessage = objectMessage?.Body as AnswerSentMessage;
-
-                    Console.WriteLine($"Answer received: {answerSentMessage?.AnswerIndex ?? -1}");
+                    AnswerSentTextFormatter formatter = new AnswerSentTextFormatter(objectMessage?.Body as AnswerSentMessage);
+                    WriteOutputString(Console.Out, formatter);
                 }
                 else if (message is ITextMessage)
                 {
                     var textMessage = message as ITextMessage;
-                    var answerSentMessageString = textMessage.Text;
-                    var answerSentMessage = new AnswerSentMessage(answerSentMessageString);
-
-                    Console.WriteLine($"Answer received: {answerSentMessage.AnswerIndex}");
+                    AnswerSentTextFormatter formatter = new AnswerSentTextFormatter(new AnswerSentMessage(textMessage.Text));
+                    WriteOutputString(Console.Out, formatter);
                 }
             }
+        }
 
+        
 
+        public static void WriteOutputString(TextWriter writer, ITextFormatter formatter)
+        {
+            string output = formatter.Format(); 
+            writer.WriteLine(output);
         }
     }
 }
