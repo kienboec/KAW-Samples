@@ -49,7 +49,7 @@ namespace QuestionService.UI
             var root = document.RootElement;
             QuestionText = root.GetProperty("text").ToString();
             RaisePropertyChanged(nameof(QuestionText));
-
+            
             Answer1 = root.GetProperty("answer1").ToString();
             RaisePropertyChanged(nameof(Answer1));
             Answer2 = root.GetProperty("answer2").ToString();
@@ -58,6 +58,8 @@ namespace QuestionService.UI
             RaisePropertyChanged(nameof(Answer3));
             Answer4 = root.GetProperty("answer4").ToString();
             RaisePropertyChanged(nameof(Answer4));
+
+            // Alternative approach: System.Text.Json.JsonSerializer.Deserialize<Question>(content)
         }
 
         private async void SendAnswerAction(string stringParameter)
